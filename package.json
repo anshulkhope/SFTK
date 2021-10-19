@@ -37,7 +37,7 @@
   },
   "scripts": {
     "start": "electron .",
-    "dist:all": "electron-builder -wl -p always"
+    "dist:all": "electron-builder -wl"
   },
   "keywords": [
     "sftk",
