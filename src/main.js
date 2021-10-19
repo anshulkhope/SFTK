@@ -1,9 +1,6 @@
-const $ = require('jquery');
-const { ipcRenderer } = require('electron');
 const path = require('path');
 const sqlite3 = require('sqlite3');
 const os = require('os')
-
 
 let dbPathBasedOnOS;
 if (process.platform === 'win32') {
