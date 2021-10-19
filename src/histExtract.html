@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=1366, initial-scale=1.0">
+        <title>SFTK - Dashboard</title>
+        <link href="styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="overlay" class="bg-info">
+            <div id="overlay-content">
+                <h4 style="color:white">Please make sure that your browser (Chrome) is not open.
+                Please close it if so.</h4>
+                <br>
+                <button id="slideDo" class="btn btn-success nond">OK, It's not open</button>
+            </div>
+        </div>
+        <header role="heading">
+            <nav id="headbar" class="navbar navbar-expand-lg navbar-dark bg-info">
+                <div class="container-fluid">
+                  <span class="navbar-brand mb-0 h1">SFTK - <span id="currentFeature"></span></span>
+                </div>
+                <div class="d-flex align-items-center" style="margin-right: 8px;">
+                    <button class="btn btn-primary nond" id="minimz-w">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    &nbsp;
+                    <button class="btn btn-danger nond" id="close-w">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </nav>
+        </header>
+        <main role="main">
+            <div class="table-margin">
+                <table class="table-sm table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">URL</th>
+                        </tr>
+                    </thead>
+                    <tbody id="activityList">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <script src="main.js"></script>
+        <script src="sendIPC.js"></script>
+        <script>
+            handleLoadOverlay();
+        </script>
+    </body>
+</html>
