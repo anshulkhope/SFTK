@@ -80,18 +80,6 @@ function onLoad() {
     //     } else {
     //     }
     // });
-
-    $('#close-w').on('click', function() {
-        ipcRenderer.send('closed', true);
-    });
-    $('#minimz-w').on('click', function() {
-        ipcRenderer.send('minimized', true);
-    });
-    $('#slideDo').on('click', function() {
-        handleDB();
-    });
-
-    $('#currentFeature').html('View Chrome History');
 }
 
 window.onload = onLoad;
