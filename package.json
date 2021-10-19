@@ -10,7 +10,7 @@
   ],
   "build": {
     "appId": "com.anshulkhope.sftk",
-    "productName": "SmartForsenicToolKit",
+    "productName": "SmartForensicToolKit",
     "icon": "assets/icons/icon.ico",
     "copyright": "Copyright © 2021 - Anshul Khope",
     "directories": {
