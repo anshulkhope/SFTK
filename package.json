@@ -36,8 +36,7 @@
     "url": "git+https://github.com/anshulkhope/sftk.git"
   },
   "scripts": {
-    "start": "electron .",
-    "dist:win": "electron-packager . SFTK --platform=win32 --arch=ia32 --output=build/win --overwrite --icon=assets/icon/icon.ico"
+    "start": "electron ."
   },
   "keywords": [
     "sftk",
@@ -48,7 +47,7 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "^14.0.1",
-    "electron-packager": "^15.4.0",
+    "electron-builder": "^22.13.1",
     "tar": ">=4.4.18"
   },
   "dependencies": {
