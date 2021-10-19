@@ -1,6 +1,6 @@
 {
   "name": "sftk",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Smart Forensic Tool Kit",
   "main": "index.js",
   "os": [
