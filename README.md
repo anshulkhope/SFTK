@@ -4,4 +4,4 @@
 ## Current Features
 > Find all your Chrome User History (SFTK HistoryExtractor)
 
-NOTE: SFTK HistoryExtractor requires Google Chrome to be installed on your computer.
+NOTE: SFTK HistoryExtractor reads Google Chrome's history. Thus, in order to see your history, you need to have Google Chrome installed and have worked in it.
