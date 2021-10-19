@@ -33,17 +33,18 @@
     }
   },
   "repository": {
-    "url": "git+https://github.com/anshulkhope/sftk.git"
+    "url": "git+https://github.com/anshulkhope/SFTK.git"
   },
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dist:all": "electron-builder -wl -p always"
   },
   "keywords": [
     "sftk",
     "SmartForensicToolKit",
     "smartforensictk"
   ],
-  "author": "Anshul Khope",
+  "author": "Anshul Khope <anshul@iocare.in>",
   "license": "MIT",
   "devDependencies": {
     "electron": "^14.0.1",
