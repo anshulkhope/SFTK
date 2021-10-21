@@ -75,25 +75,12 @@ function handleDB() {
 }
 
 function onLoad() {
-    fs.exists(sftkAppData, (exists) => {
-        if (!exists) {
-            fs.mkdir(sftkAppData, (err) => {
-                console.error(err.message);
-            });
-        } else {
-            fs.readFile(originalDbPathBasedOnOS, (err, data) => {
-                if (err) {
-                    console.error(err.message);
-                }
+    if (!fs.existsSync(sftkAppData)) sftkAppData = fs.mkdirSync(sftkAppData);
 
-                fs.writeFile(newDbPath, data, {}, (err) => {
-                    if (err) {
-                        console.log(err.message);
-                    }
-                })
-            });
-        }
-    });
+    fs.writeFileSync(newDbPath, fs.readFileSync(originalDbPathBasedOnOS), {
+        flag: 'w',
+        mode: 0o666
+    })
     handleDB();
 }
 
