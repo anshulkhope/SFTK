@@ -1,15 +1,22 @@
 const path = require('path');
 const sqlite3 = require('sqlite3');
-const os = require('os')
+const os = require('os');
+const fs = require('fs');
 
-let dbPathBasedOnOS;
+let originalDbPathBasedOnOS;
+let newDbPath;
+let sftkAppData;
 if (process.platform === 'win32') {
     const appData = process.env.LOCALAPPDATA;
-    dbPathBasedOnOS = path.join(appData, 'Google/Chrome/User Data/Default/History');
+    originalDbPathBasedOnOS = path.join(appData, 'Google/Chrome/User Data/Default/History');
+    sftkAppData = path.join(appData, 'sftk-data');
 }
 if (process.platform === 'linux') {
-    dbPathBasedOnOS = '/home/' + os.userInfo().username + '/.config/google-chrome/Default/History';
+    let userConfigDir = '/home/' + os.userInfo().username + '/.config';
+    originalDbPathBasedOnOS = path.join(userConfigDir + '/google-chrome/Default/History');
+    sftkAppData = path.join(userConfigDir, 'sftk-data');
 }
+newDbPath = path.join(sftkAppData, 'chrome-history');
 
 function handleLoadOverlay() {
     $('#overlay').addClass('animate__animated');
@@ -40,13 +47,14 @@ function appendRowToActivityList(id, title, url) {
 
 function handleDB() {
     console.log('Opening Chrome history Database...');
-    console.log('Finding Database on path: ' + dbPathBasedOnOS);
-    const db = new sqlite3.Database(dbPathBasedOnOS, sqlite3.OPEN_READWRITE, (err) => {
+    console.log('Finding Database on path: ' + originalDbPathBasedOnOS);
+    console.log('Copied DB to: ' + newDbPath);
+    const db = new sqlite3.Database(newDbPath, sqlite3.OPEN_READWRITE, (err) => {
         if (err) {
             alert(err.message);
             return;
         }
-        console.log('Opened chrome history database from path: ' + dbPathBasedOnOS);
+        console.log('Opened chrome history database from path: ' + newDbPath);
     });
     db.serialize(() => {
         db.each('SELECT id,title,url FROM urls', (err, row) => {
@@ -67,16 +75,26 @@ function handleDB() {
 }
 
 function onLoad() {
-    // fs.exists(sftkAppData, (exists) => {
-    //     if (!exists) {
-    //         fs.mkdir(sftkAppData, {
-    //             mode: 1
-    //         }, (err) => {
-    //             console.error(err.message);
-    //         });
-    //     } else {
-    //     }
-    // });
+    fs.exists(sftkAppData, (exists) => {
+        if (!exists) {
+            fs.mkdir(sftkAppData, (err) => {
+                console.error(err.message);
+            });
+        } else {
+            fs.readFile(originalDbPathBasedOnOS, (err, data) => {
+                if (err) {
+                    console.error(err.message);
+                }
+
+                fs.writeFile(newDbPath, data, {}, (err) => {
+                    if (err) {
+                        console.log(err.message);
+                    }
+                })
+            });
+        }
+    });
+    handleDB();
 }
 
 window.onload = onLoad;
