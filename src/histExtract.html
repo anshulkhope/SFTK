@@ -8,14 +8,6 @@
         <link href="styles.css" rel="stylesheet">
     </head>
     <body>
-        <div id="overlay" class="bg-info">
-            <div id="overlay-content">
-                <h4 style="color:white">Please make sure that your browser (Chrome) is not open.
-                Please close it if so.</h4>
-                <br>
-                <button id="slideDo" class="btn btn-success nond">OK, It's not open</button>
-            </div>
-        </div>
         <header role="heading">
             <nav id="headbar" class="navbar navbar-expand-lg navbar-dark bg-info">
                 <div class="container-fluid">
@@ -33,8 +25,14 @@
             </nav>
         </header>
         <main role="main">
-            <div class="table-margin">
-                <table class="table-sm table-bordered table-responsive">
+            <div class="margin">
+                <div class="form-control">
+                    <input type="text" id="searchByTitleText" class="form-control" placeholder="Search by title">
+                    <button type="button" class="btn btn-success waves-effect" id="searchTableByTitleBtn">Search...</button>
+                </div>
+            </div>
+            <div class="t-margin">
+                <table class="table table-bordered table-responsive">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -48,8 +46,5 @@
         </main>
         <script src="main.js"></script>
         <script src="sendIPC.js"></script>
-        <script>
-            handleLoadOverlay();
-        </script>
     </body>
 </html>
