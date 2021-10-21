@@ -48,15 +48,18 @@ td {
     overflow-y: hidden;
 }
 
-.table-margin {
-    margin-top: 5rem;
+.t-margin {
     margin-left: 2.5rem;
+    margin-right: 2.5rem;
+}
+
+.margin {
+    margin: 5rem;
 }
 
 table {
     table-layout: fixed;
     width: 98%;
-
 }
 
 ::-webkit-scrollbar {
