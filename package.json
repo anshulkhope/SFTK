@@ -1,6 +1,6 @@
 {
   "name": "sftk",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Smart Forensic Tool Kit",
   "main": "index.js",
   "os": [
@@ -11,7 +11,7 @@
   "build": {
     "appId": "com.anshulkhope.sftk",
     "productName": "SmartForensicToolKit",
-    "icon": "assets/icons/icon.ico",
+    "icon": "assets/icons/icon.png",
     "copyright": "Copyright © 2021 - Anshul Khope",
     "directories": {
       "buildResources": "assets/icons"
@@ -23,8 +23,7 @@
     },
     "linux": {
       "target": [
-        "AppImage",
-        "deb"
+        "AppImage"
       ]
     },
     "nsis": {
