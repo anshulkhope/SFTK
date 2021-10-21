@@ -20,7 +20,7 @@ function main() {
     mainWindow.loadFile('src/index.html');
     mainWindow.setMenu(null);
     mainWindow.flashFrame(true);
-    // Listen to IPC Renderer events
+
     sev.handleEvents(ipcMain, app, mainWindow);
 }
 
