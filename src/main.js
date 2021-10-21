@@ -1,5 +1,5 @@
 const path = require('path');
-const sqlite3 = require('sqlite3');
+const sqlite3 = require('sqlite3').verbose();
 const os = require('os');
 const fs = require('fs');
 
@@ -74,14 +74,16 @@ function handleDB() {
     });
 }
 
-function onLoad() {
+function runMainFuncs() {
+
     if (!fs.existsSync(sftkAppData)) sftkAppData = fs.mkdirSync(sftkAppData);
 
     fs.writeFileSync(newDbPath, fs.readFileSync(originalDbPathBasedOnOS), {
         flag: 'w',
         mode: 0o666
     })
+
     handleDB();
 }
 
-window.onload = onLoad;
+window.onload = runMainFuncs;
