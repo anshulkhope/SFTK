@@ -10,5 +10,3 @@ $('#minimz-w').on('click', function() {
 $('#slideDo').on('click', function() {
     handleDB();
 });
-
-$('#currentFeature').html('View Chrome History');
