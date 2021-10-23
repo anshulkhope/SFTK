@@ -16,5 +16,5 @@ NOTE: SFTK HistoryExtractor reads Google Chrome's history. Thus, in order to see
 ### Minor Releases
 * v0.0.1 : Too Old and thus, deleted
 * v0.0.2 : Too Old and thus, deleted
-* v0.0.3 : Complete, Mostly Stable, Freeily available
-* v0.0.4 : In-Development, Not yet available
+* v0.0.3 : Complete, Stable, Freeily available
+* v0.0.4 : Complete, Mostly Stable, Freeily Available
