@@ -5,7 +5,6 @@ const sev = require('./lib/sevent');
 
 function createWindow() {
     const mainWindow = new BrowserWindow({
-        title: 'SFTK',
         width: 1100,
         height: 680,
         webPreferences: {
