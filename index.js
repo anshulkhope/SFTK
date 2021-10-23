@@ -1,8 +1,9 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
+
 const path = require('path');
 const sev = require('./lib/sevent');
 
-function main() {
+function createWindow() {
     const mainWindow = new BrowserWindow({
         title: 'SFTK',
         width: 1100,
@@ -16,16 +17,14 @@ function main() {
         maximizable: false,
         icon: path.join(__dirname, 'assets/icons/icon.png')
     });
-    
     mainWindow.loadFile('src/index.html');
     mainWindow.setMenu(null);
     mainWindow.flashFrame(true);
-
     sev.handleEvents(ipcMain, app, mainWindow);
 }
 
-app.on('ready', main);
+app.on('ready', createWindow);
 
-app.on('window-all-closed', () => {
+app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit();
 });
