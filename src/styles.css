@@ -79,3 +79,16 @@ table {
 ::-webkit-scrollbar-thumb:hover {
 background: #555;
 }
+
+.c-navbrand {
+    font-size: 1.059rem;
+    font-weight: 500;
+}
+
+nav {
+    height: 2.7rem;
+}
+
+.c-disabled {
+    display: none;
+}
