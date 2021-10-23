@@ -1,6 +1,8 @@
 # Smart Forensic Tool Kit
 ![SmartForensicToolKit](https://app.anshulkhope.com/apps/sftk/icon.png)
 
+The Smart Forensic Tool Kit is a package of smart tools.
+
 ## Current Features
 * Find all your Chrome **Default** User History (SFTK HistoryExtractor)
 
