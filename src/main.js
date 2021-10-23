@@ -6,6 +6,9 @@ const fs = require('fs');
 let originalDbPathBasedOnOS;
 let newDbPath;
 let sftkAppData;
+
+let db;
+
 if (process.platform === 'win32') {
     const appData = process.env.LOCALAPPDATA;
     originalDbPathBasedOnOS = path.join(appData, 'Google/Chrome/User Data/Default/History');
@@ -45,25 +48,54 @@ function appendRowToActivityList(id, title, url) {
     $('#activityList').append(row);
 }
 
-function handleDB() {
-    console.log('Opening Chrome history Database...');
-    console.log('Finding Database on path: ' + originalDbPathBasedOnOS);
-    console.log('Copied DB to: ' + newDbPath);
-    const db = new sqlite3.Database(newDbPath, sqlite3.OPEN_READWRITE, (err) => {
+function openDatabase() {
+    db = new sqlite3.Database(newDbPath, sqlite3.OPEN_READWRITE, (err) => {
         if (err) {
             alert(err.message);
             return;
         }
         console.log('Opened chrome history database from path: ' + newDbPath);
     });
+}
+
+function fillActivity_Normal() {
     db.serialize(() => {
         db.each('SELECT id,title,url FROM urls', (err, row) => {
             if (err) {
-                alert(err.message);
+                console.error(err.message);
+            }
+            if (row !== null) {
+                $('#loader').hide();
             }
             appendRowToActivityList(row.id, row.title, row.url);
         });
         console.log('Recieved data.');
+    });
+}
+
+function fillActivity_bySearch() {
+    $('#activityList').html('');
+    db.serialize(() => {
+        db.each('SELECT * FROM urls WHERE title LIKE \'%' + document.getElementById('searchText').value + '%\';', (err, row) => {
+            if (err) {
+                console.error(err.message);
+            }
+            appendRowToActivityList(row.id, row.title, row.url);
+            console.log(row)
+        });
+    });
+}
+
+function handleDB() {
+    console.log('Opening Chrome history Database...');
+    console.log('Finding Database on path: ' + originalDbPathBasedOnOS);
+    console.log('Copied DB to: ' + newDbPath);
+    
+    openDatabase();
+    fillActivity_Normal();
+    $('#searchBtn').on('click', () => {
+        openDatabase();
+        fillActivity_bySearch();
     });
     db.close((err) => {
         if (err) {
@@ -87,3 +119,5 @@ function runMainFuncs() {
 }
 
 window.onload = runMainFuncs;
+
+module.exports = { db };
