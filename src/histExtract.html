@@ -4,14 +4,14 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=1366, initial-scale=1.0">
-        <title>SFTK - Dashboard</title>
+        <title>SFTK - HistoryExtractor</title>
         <link href="styles.css" rel="stylesheet">
     </head>
     <body>
         <header role="heading">
             <nav id="headbar" class="navbar navbar-expand-lg navbar-dark bg-info">
                 <div class="container-fluid">
-                  <span class="navbar-brand mb-0 h1">SFTK - <span id="currentFeature"></span></span>
+                    <span class="text-light c-navbrand">SFTK - HistoryExtractor</span>
                 </div>
                 <div class="d-flex align-items-center" style="margin-right: 8px;">
                     <button class="btn btn-primary nond" id="minimz-w">
@@ -27,8 +27,8 @@
         <main role="main">
             <div class="margin">
                 <div class="form-control">
-                    <input type="text" id="searchByTitleText" class="form-control" placeholder="Search by title">
-                    <button type="button" class="btn btn-success waves-effect" id="searchTableByTitleBtn">Search...</button>
+                    <input type="text" id="searchText" class="form-control" placeholder="Search by title">
+                    <button type="button" class="btn btn-success waves-effect" id="searchBtn">Search...</button>
                 </div>
             </div>
             <div class="t-margin">
@@ -42,6 +42,11 @@
                     </thead>
                     <tbody id="activityList"></tbody>
                 </table>
+            </div>
+            <div class="text-center mt-2" id="loader">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
             </div>
         </main>
         <script src="main.js"></script>
