@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>SFTK - Select a Feature</title>
+        <link href="styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <header role="heading">
+            <nav id="headbar" class="navbar navbar-expand-lg navbar-dark bg-info">
+                <div class="container-fluid">
+                  <span class="text-light c-navbrand">SFTK - Select a Feature</span>
+                </div>
+                <div class="d-flex align-items-center" style="margin-right: 8px;">
+                    <button class="btn btn-primary nond" id="minimz-w">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    &nbsp;
+                    <button class="btn btn-danger nond" id="close-w">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </nav>
+        </header>
+        <div class="container" style="margin-top: 5rem;">
+            <div class="form-control">
+                <h3>HistoryExtractor Settings:</h3>
+                <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="isTrackingHist"
+                    />
+                    <label class="form-check-label" for="isTrackingHist">
+                      Default checkbox
+                    </label>
+                  </div>
+            </div>
+        </div>
+        <script src="sendIPC.js"></script>
+    </body>
+</html>
