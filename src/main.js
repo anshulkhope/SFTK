@@ -81,7 +81,12 @@ function fillActivity_bySearch() {
                 console.error(err.message);
             }
             appendRowToActivityList(row.id, row.title, row.url);
-            console.log(row)
+            console.log(row);
+            $('#loader').show();
+            function toggleLoader() {
+                $('#loader').hide();
+            }
+            setTimeout(toggleLoader, 2000);
         });
     });
 }
